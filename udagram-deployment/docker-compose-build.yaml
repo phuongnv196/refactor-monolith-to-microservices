@@ -3,16 +3,16 @@ services:
   reverse-proxy:
     build:
       context: reverse-proxy
-    image: reverse-proxy/reverse-proxy
+    image: siungocno1/reverse-proxy
   udagram-backend-user:
     build:
       context: ../udagram-backend-user
-    image: reverse-proxy/udagram-backend-user
+    image: siungocno1/udagram-backend-user
   udagram-backend-feed:
     build:
       context: ../udagram-backend-feed
-    image: reverse-proxy/udagram-backend-feed
+    image: siungocno1/udagram-backend-feed
   udagram-frontend:
     build:
       context: ../udagram-frontend
-    image: reverse-proxy/udagram-frontend
+    image: siungocno1/udagram-frontend

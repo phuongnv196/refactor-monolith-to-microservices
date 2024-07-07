@@ -12,7 +12,7 @@ spec:
         service: reverse-proxy
     spec:
       containers:
-      - image: reverse-proxy/reverse-proxy
+      - image: siungocno1/reverse-proxy
         name: reverse-proxy
         imagePullPolicy: Always
         resources:

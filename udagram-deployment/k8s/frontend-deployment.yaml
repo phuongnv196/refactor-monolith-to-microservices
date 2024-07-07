@@ -13,7 +13,7 @@ spec:
         api: external
     spec:
       containers:
-      - image: reverse-proxy/udagram-frontend
+      - image: siungocno1/udagram-frontend
         name: udagram-frontend
         imagePullPolicy: Always
         ports:

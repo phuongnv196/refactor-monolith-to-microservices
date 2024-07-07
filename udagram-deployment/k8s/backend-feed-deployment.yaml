@@ -12,7 +12,7 @@ spec:
         service: udagram-backend-feed
     spec:
       containers:
-      - image: reverse-proxy/udagram-backend-feed
+      - image: siungocno1/udagram-backend-feed
         name: udagram-backend-feed
         imagePullPolicy: Always
         resources:
