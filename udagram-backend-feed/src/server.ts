@@ -8,16 +8,21 @@ import bodyParser from 'body-parser';
 import {config} from './config/config';
 import {V0_FEED_MODELS} from './controllers/v0/model.index';
 
-
+console.log(config);
 (async () => {
   await sequelize.addModels(V0_FEED_MODELS);
+
+  console.debug("Initialize database connection...");
   await sequelize.sync();
 
   const app = express();
-  const port = process.env.PORT || 8080;
+  const port = process.env.PORT || 8100;
 
   app.use(bodyParser.json());
 
+  // We set the CORS origin to * so that we don't need to
+  // worry about the complexities of CORS this lesson. It's
+  // something that will be covered in the next course.
   app.use(cors({
     allowedHeaders: [
       'Origin', 'X-Requested-With',
@@ -25,7 +30,8 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
       'X-Access-Token', 'Authorization',
     ],
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-    origin: config.url,
+    preflightContinue: true,
+    origin: '*',
   }));
 
   app.use('/api/v0/', IndexRouter);
@@ -35,7 +41,7 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
     res.send( '/api/v0/' );
   } );
 
-
+console.log('open', port);
   // Start the Server
   app.listen( port, () => {
     console.log( `server running ${config.url}` );
